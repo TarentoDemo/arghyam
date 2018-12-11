@@ -3,25 +3,6 @@ import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { FormArray } from '@angular/forms';
 
-const flexiConfig = {
-  "items": [
-    {
-      "name": "personName",
-      "label": "Person's Name",
-      "type": "TextField"
-    },
-    {
-      "name": "states",
-      "label": "Person's state",
-      "type": "DropDown",
-      "values": [
-        "Maharashtra",
-        "Kerala",
-        "Tamil Nadu"
-      ]
-    }
-  ]
-}
   
 
 @Component({
@@ -31,6 +12,8 @@ const flexiConfig = {
 })
 export class ProfileEditorComponent {
   showResult:boolean = false;
+  states = ['Maharashtra', 'Kerala',
+            'Tamil Nadu'];
   
   profileForm = this.fb.group({
     name: ['', Validators.required],

@@ -6,11 +6,8 @@
 
   <label>
      State:
-    <select  name="" id="" formControlName="state">
-      <option value="">Please select a State</option>
-      <option value="">TamilNadu</option>
-      <option value="">Maharashtra</option>
-      <option value="">Kerala</option>
+    <select name="" id="" formControlName="state">
+      <option *ngFor="let sst of states; let i = index" value="">{{sst}}</option> 
     </select>
   </label>
   <button type="submit" [disabled]="!profileForm.valid">Submit</button>
@@ -23,6 +20,6 @@
   Form Value: {{ profileForm.value | json }}
 </p>
 
-  <p *ngFor="let data of flexiConfig">{{data.items}}</p>
+
 
 
