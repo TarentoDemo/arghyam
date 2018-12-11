@@ -1,14 +1,10 @@
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-  <label>
-     Name:
-    <input type="text" formControlName="name" required>
-  </label>
-
-  <label>
-     State:
-    <select name="" id="" formControlName="state">
-      <option *ngFor="let sst of states; let i = index" value="">{{sst}}</option> 
-    </select>
+  <label *ngFor="let item of flexiConfig.items">
+     {{item.name}}
+    <input *ngIf="item.type === 'TextField'" type="text" [formControlName]="item.name" required>
+    <select *ngIf="item.type === 'DropDown'" [formControlName]="item.name">
+        <option *ngFor="let value of item.values" [value]="value">{{value}}</option> 
+      </select>
   </label>
   <button type="submit" [disabled]="!profileForm.valid">Submit</button>
 </form>
