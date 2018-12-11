@@ -1,17 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { FormArray } from '@angular/forms';
-
-
 
 @Component({
   selector: 'app-profile-editor',
   templateUrl: './profile-editor.component.html',
   styleUrls: ['./profile-editor.component.css']
 })
-export class ProfileEditorComponent {
+export class ProfileEditorComponent implements OnInit {
   showResult: boolean = false;
+  profileForm;
+  formObject = {};
   flexiConfig = {
     "items": [
       {
@@ -32,14 +32,13 @@ export class ProfileEditorComponent {
     ]
   }
 
-
-  profileForm = this.fb.group({
-    personname: ['', Validators.required],
-    states: ['']
-  });
-
-
-
+  ngOnInit(){
+    this.flexiConfig.items.forEach((el) => {
+      this.formObject[el.name] = ['', Validators.required];
+    });
+    this.profileForm = this.fb.group(this.formObject);
+  }
+  
   constructor(private fb: FormBuilder) { }
 
   onSubmit() {

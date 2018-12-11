@@ -1,6 +1,6 @@
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
   <label *ngFor="let item of flexiConfig.items">
-     {{item.name}}
+     {{item.label}}
     <input *ngIf="item.type === 'TextField'" type="text" [formControlName]="item.name" required>
     <select *ngIf="item.type === 'DropDown'" [formControlName]="item.name">
         <option *ngFor="let value of item.values" [value]="value">{{value}}</option> 
@@ -8,10 +8,7 @@
   </label>
   <button type="submit" [disabled]="!profileForm.valid">Submit</button>
 </form>
-
-
 <hr>
-
 <p *ngIf="showResult">
   Form Value: {{ profileForm.value | json }}
 </p>
